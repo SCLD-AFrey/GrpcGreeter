@@ -21,9 +21,7 @@ message EndpointCheckReply {
 	string content = 1;
 }
 // The request message containing the user's name.
-message HeartbeatCheckRequest {
-
-}
+message HeartbeatCheckRequest { }
 
 // The response message containing the greetings.
 message HeartbeatCheckReply {
