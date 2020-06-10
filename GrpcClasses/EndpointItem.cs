@@ -12,9 +12,12 @@ namespace GrpcClasses
 
     public class EndpointItemCheck
     {
-        public EndpointItem Endpoint { get; set; }
-        public DateTime CheckDateTime { get; set; }
-        public bool Result { get; set; }
-        public string Message { get; set; }
+        public EndpointItem Endpoint { get; set; } = new EndpointItem();
+        public DateTime CheckDateTime { get; set; } = DateTime.Now;
+        public bool Result { get; set; } = false;
+        public string Message { get; set; } = String.Empty;
     }
+
+
+
 }

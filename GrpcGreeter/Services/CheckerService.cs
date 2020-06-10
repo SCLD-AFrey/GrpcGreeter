@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using DevExpress.Xpo;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using GrpcClasses;
 
 
@@ -26,23 +23,30 @@ namespace GrpcGreeter
             var item = JsonSerializer.Deserialize<EndpointItem>(request.Content);
             var itemCheck = new EndpointItemCheck()
             {
-                Endpoint = item,
-                CheckDateTime = DateTime.Now,
-                Result = PlatormList.Contains(item.Platform.ToLower()),
-                Message = string.Empty
+                Endpoint = item
             };
 
             if (!PlatormList.Contains(item.Platform.ToLower()))
             {
-                itemCheck.Result = false;
-                itemCheck.Message += "[Platform is not windows or linux]";
+                itemCheck.Message += "Platform is not windows or linux";
             }
 
-            _logger.LogInformation(itemCheck.Endpoint.IpAddress + ": " + itemCheck.Result.ToString());
-
-            return Task.FromResult(new EndpointCheckReply
+            var reply = new EndpointCheckReply
             {
                 Content = JsonSerializer.Serialize(itemCheck)
+            };
+
+            _logger.LogInformation(JsonSerializer.Serialize(reply));
+
+            return Task.FromResult(reply);
+        }
+
+        public override Task<HeartbeatCheckReply> HeartbeatCheck(HeartbeatCheckRequest request,
+            ServerCallContext context)
+        {
+            return Task.FromResult(new HeartbeatCheckReply()
+            {
+                Reply = true
             });
         }
     }

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>8e356ad3-4cce-404f-8745-3728bb5c9588</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="DevExpress.Xpo" Version="20.1.4" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.27.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.5" />
   </ItemGroup>
 
