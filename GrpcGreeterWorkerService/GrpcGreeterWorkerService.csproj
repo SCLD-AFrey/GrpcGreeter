@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-GrpcGreeterWorkerService-CB043EF9-9C71-48AB-8A1F-FFEC585A8E00</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.12.3" />
+    <PackageReference Include="Grpc.AspNetCore.Server" Version="2.29.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.29.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.29.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GrpcClasses\GrpcClasses.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\GrpcGreeter\Protos\greet.proto" GrpcServices="Server" />
+  </ItemGroup>
+</Project>
