@@ -170,21 +170,6 @@
           "build/Grpc.Tools.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Hosting.WindowsServices/3.1.5": {
-        "type": "package",
-        "dependencies": {
-          "System.ServiceProcess.ServiceController": "4.7.0"
-        },
-        "compile": {
-          "lib/netcoreapp3.1/Microsoft.AspNetCore.Hosting.WindowsServices.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/Microsoft.AspNetCore.Hosting.WindowsServices.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
       "Microsoft.Extensions.Configuration/3.1.5": {
         "type": "package",
         "dependencies": {
@@ -377,6 +362,20 @@
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Hosting.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Hosting.WindowsServices/3.1.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Hosting": "3.1.5",
+          "Microsoft.Extensions.Logging.EventLog": "3.1.5",
+          "System.ServiceProcess.ServiceController": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Extensions.Hosting.WindowsServices.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.Hosting.WindowsServices.dll": {}
         }
       },
       "Microsoft.Extensions.Http/2.1.1": {
@@ -1293,21 +1292,6 @@
         "tools/windows_x86/protoc.exe"
       ]
     },
-    "Microsoft.AspNetCore.Hosting.WindowsServices/3.1.5": {
-      "sha512": "y382eb9gg4Td83/ZcqQFChq5gWE0oO/UcZPFBVSKUyCejl2w2N9mflIsOKNJbui0AJcP16aMHMQpFqtsfeyTtw==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.hosting.windowsservices/3.1.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp3.1/Microsoft.AspNetCore.Hosting.WindowsServices.dll",
-        "lib/netcoreapp3.1/Microsoft.AspNetCore.Hosting.WindowsServices.xml",
-        "microsoft.aspnetcore.hosting.windowsservices.3.1.5.nupkg.sha512",
-        "microsoft.aspnetcore.hosting.windowsservices.nuspec"
-      ]
-    },
     "Microsoft.Extensions.Configuration/3.1.5": {
       "sha512": "LZfdAP8flK4hkaniUv6TlstDX9FXLmJMX1A4mpLghAsZxTaJIgf+nzBNiPRdy/B5Vrs74gRONX3JrIUJQrebmA==",
       "type": "package",
@@ -1550,6 +1534,22 @@
         "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.xml",
         "microsoft.extensions.hosting.abstractions.3.1.5.nupkg.sha512",
         "microsoft.extensions.hosting.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Hosting.WindowsServices/3.1.5": {
+      "sha512": "MBol5EQ09HJ6cU3JdSsCaZb5Hw4cPtWr4CHiI/wfPO/84PnCnCrse4eMhUVhb/0CLdAvhHbf2LBHmFjO1iWP2w==",
+      "type": "package",
+      "path": "microsoft.extensions.hosting.windowsservices/3.1.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.0/Microsoft.Extensions.Hosting.WindowsServices.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Hosting.WindowsServices.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Hosting.WindowsServices.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Hosting.WindowsServices.xml",
+        "microsoft.extensions.hosting.windowsservices.3.1.5.nupkg.sha512",
+        "microsoft.extensions.hosting.windowsservices.nuspec"
       ]
     },
     "Microsoft.Extensions.Http/2.1.1": {
@@ -3456,8 +3456,8 @@
       "Grpc.Net.ClientFactory >= 2.29.0",
       "Grpc.Tools >= 2.29.0",
       "GrpcClasses >= 1.0.0",
-      "Microsoft.AspNetCore.Hosting.WindowsServices >= 3.1.5",
-      "Microsoft.Extensions.Hosting >= 3.1.5"
+      "Microsoft.Extensions.Hosting >= 3.1.5",
+      "Microsoft.Extensions.Hosting.WindowsServices >= 3.1.5"
     ]
   },
   "packageFolders": {
@@ -3537,11 +3537,11 @@
             "target": "Package",
             "version": "[2.29.0, )"
           },
-          "Microsoft.AspNetCore.Hosting.WindowsServices": {
+          "Microsoft.Extensions.Hosting": {
             "target": "Package",
             "version": "[3.1.5, )"
           },
-          "Microsoft.Extensions.Hosting": {
+          "Microsoft.Extensions.Hosting.WindowsServices": {
             "target": "Package",
             "version": "[3.1.5, )"
           }
