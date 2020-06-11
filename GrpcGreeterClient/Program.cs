@@ -19,6 +19,7 @@ namespace GrpcGreeterClient
             List<string> PlatformList = new List<string>() { "windows", "linux", "other" };
 
 
+            Console.WriteLine("gRPC Greet Client - Sync");
             Console.WriteLine("Enter number of checks:");
             int NumberOfChecks = Int32.Parse(Console.ReadLine());
 

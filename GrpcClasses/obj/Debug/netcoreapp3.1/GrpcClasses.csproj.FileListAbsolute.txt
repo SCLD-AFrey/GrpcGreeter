@@ -7,4 +7,3 @@ C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debu
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.csproj.CoreCompileInputs.cache
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.pdb
-C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.csprojAssemblyReference.cache
