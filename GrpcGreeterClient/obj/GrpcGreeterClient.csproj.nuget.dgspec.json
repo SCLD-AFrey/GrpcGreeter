@@ -65,6 +65,10 @@
             "Grpc.Core": {
               "target": "Package",
               "version": "[2.29.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.5, )"
             }
           },
           "imports": [
@@ -146,10 +150,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "DevExpress.Xpo": {
-              "target": "Package",
-              "version": "[20.1.4, )"
-            },
             "Google.Protobuf": {
               "target": "Package",
               "version": "[3.12.3, )"

@@ -65,6 +65,10 @@
             "Grpc.Core": {
               "target": "Package",
               "version": "[2.29.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.5, )"
             }
           },
           "imports": [

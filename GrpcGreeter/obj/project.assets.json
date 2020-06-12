@@ -401,7 +401,7 @@
           "lib/netstandard1.0/_._": {}
         },
         "build": {
-          "build/netstandard2.0/NETStandard.Library.targets": {}
+          "build/netstandard2.0/_._": {}
         }
       },
       "runtime.native.System.Data.SqlClient.sni/4.4.0": {
@@ -847,7 +847,8 @@
         "dependencies": {
           "DevExpress.Xpo": "20.1.4",
           "Google.Protobuf": "3.12.3",
-          "Grpc.Core": "2.29.0"
+          "Grpc.Core": "2.29.0",
+          "Microsoft.Extensions.Configuration": "3.1.5"
         },
         "compile": {
           "bin/placeholder/GrpcClasses.dll": {}
@@ -860,7 +861,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "DevExpress.Xpo": "20.1.4",
           "Google.Protobuf": "3.12.3",
           "Grpc.Net.Client": "2.29.0",
           "GrpcClasses": "1.0.0",
@@ -2909,7 +2909,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "DevExpress.Xpo >= 20.1.4",
       "Grpc.AspNetCore >= 2.27.0",
       "GrpcGreeterClient >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.Certificate >= 3.1.5",
@@ -2975,10 +2974,6 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
-          "DevExpress.Xpo": {
-            "target": "Package",
-            "version": "[20.1.4, )"
-          },
           "Grpc.AspNetCore": {
             "target": "Package",
             "version": "[2.27.0, )"

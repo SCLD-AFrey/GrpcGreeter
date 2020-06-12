@@ -12,9 +12,12 @@ C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDup
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Grpc.Net.Client.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Grpc.Net.Common.dll
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcGreeterClientDuplicate\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll

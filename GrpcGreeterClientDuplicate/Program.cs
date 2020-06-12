@@ -15,92 +15,50 @@ namespace GrpcGreeterClientDuplicate
     {
         static async Task Main(string[] args)
         {
-
-            List<string> PlatformList = new List<string>() { "windows", "linux", "other" };
-
-
+            Console.WriteLine("gRPC Greet Client - Duplicate");
             Console.WriteLine("Enter number of checks:");
             int NumberOfChecks = Int32.Parse(Console.ReadLine());
 
-            var channelCredentials = new SslCredentials(File.ReadAllText(@"C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\Certs\server.pem"));
-
             using var channel = GrpcChannel.ForAddress("https://localhost:5001");
-            var endpointClient = new Checker.CheckerClient(channel);
+            var client = new Checker.CheckerClient(channel);
+            
+            var _stopwatch = new Stopwatch();
 
-            if (HasPulse(endpointClient).Result)
+            List<EndpointItem> EndpointItemList = Utils.CreateEndpointList(NumberOfChecks);
+
+            Console.WriteLine(EndpointItemList.Count.ToString() + " items to process");
+
+            _stopwatch.Start();
+
+            foreach (var item in EndpointItemList)
             {
-                var _stopwatch = new Stopwatch();
-                List<EndpointItem> EndpointItemList = new List<EndpointItem>();
-
-                for (int i = 0; i < NumberOfChecks; i++)
+                var _request = new EndpointCheckRequest()
                 {
-                    Random rand = new Random();
-                    EndpointItemList.Add(new EndpointItem()
-                    {
-                        Name = "Test " + i.ToString(),
-                        IpAddress = string.Format("{0}.{1}.{2}.{3}", rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256)),
-                        Platform = PlatformList[rand.Next(PlatformList.Count)]
-                    });
+                    Content = JsonSerializer.Serialize(item)
+                };
+                var check = new EndpointItemCheck();
+                try
+                {
+                    var _reply = await client.CheckEndpointAsync(_request);
+                    check = JsonSerializer.Deserialize<EndpointItemCheck>(_reply.Content);
                 }
-
-                Console.WriteLine(EndpointItemList.Count.ToString() + " items to process");
-
-                _stopwatch.Start();
-
-                foreach (var item in EndpointItemList)
+                catch (Exception e)
                 {
-                    var _request = new EndpointCheckRequest()
+                    check = new EndpointItemCheck()
                     {
-                        Content = JsonSerializer.Serialize(item)
+                        Endpoint = item,
+                        Message = e.Message
                     };
-                    var check = new EndpointItemCheck();
-                    try
-                    {
-                        var _reply = await endpointClient.CheckEndpointAsync(_request);
-                        check = JsonSerializer.Deserialize<EndpointItemCheck>(_reply.Content);
-                    }
-                    catch (Exception e)
-                    {
-                        check = new EndpointItemCheck()
-                        {
-                            Endpoint = item,
-                            Message = e.Message
-                        };
-                    }
-                    Console.WriteLine(check.Endpoint.Name + " - " + check.Result + " " + check.Message);
                 }
-
-                _stopwatch.Stop();
-                Console.WriteLine("Finshed " + NumberOfChecks + " records in " + _stopwatch.Elapsed + " seconds");
-
+                Console.WriteLine(check.Endpoint.Name + " - " + check.Result + " " + check.Message);
             }
+
+            _stopwatch.Stop();
+            Console.WriteLine("Finshed " + NumberOfChecks + " records in " + _stopwatch.Elapsed + " seconds");
+
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
-        private static async Task<bool> HasPulse(Checker.CheckerClient client)
-        {
-            bool _pulse = false;
-            try
-            {
-                var Heartbeat = await client.HeartbeatCheckAsync(new HeartbeatCheckRequest());
-                _pulse = Heartbeat.Reply;
-            }
-            catch (Exception e)
-            {
-                _pulse = false;
-            }
 
-            if (_pulse)
-            {
-                Console.WriteLine("Server is alive");
-            }
-            else
-            {
-                Console.WriteLine("Server is not responding");
-            }
-
-            return _pulse;
-
-        }
     }
 }

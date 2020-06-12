@@ -15,10 +15,6 @@ namespace GrpcGreeterClient
     {
         static async Task Main(string[] args)
         {
-
-            List<string> PlatformList = new List<string>() { "windows", "linux", "other" };
-
-
             Console.WriteLine("gRPC Greet Client - Sync");
             Console.WriteLine("Enter number of checks:");
             int NumberOfChecks = Int32.Parse(Console.ReadLine());
@@ -31,18 +27,7 @@ namespace GrpcGreeterClient
             if (HasPulse(endpointClient).Result)
             {
                 var _stopwatch = new Stopwatch();
-                List<EndpointItem> EndpointItemList = new List<EndpointItem>();
-
-                for (int i = 0; i < NumberOfChecks; i++)
-                {
-                    Random rand = new Random();
-                    EndpointItemList.Add(new EndpointItem()
-                    {
-                        Name = "Test " + i.ToString(),
-                        IpAddress = string.Format("{0}.{1}.{2}.{3}", rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256)),
-                        Platform = PlatformList[rand.Next(PlatformList.Count)]
-                    });
-                }
+                List<EndpointItem> EndpointItemList = Utils.CreateEndpointList(NumberOfChecks);
 
                 Console.WriteLine(EndpointItemList.Count.ToString() + " items to process");
 
