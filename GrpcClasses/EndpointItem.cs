@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace GrpcClasses
 {
@@ -17,6 +18,12 @@ namespace GrpcClasses
         public DateTime CheckDateTime { get; set; } = DateTime.Now;
         public bool Result { get; set; } = false;
         public string Message { get; set; } = String.Empty;
+    }
+
+    public static class CommonVars
+    {
+        public static IPAddress IpAddress { get; } = IPAddress.Parse("127.0.0.1");
+        public static int Port = 5001;
     }
 
     public static class Utils

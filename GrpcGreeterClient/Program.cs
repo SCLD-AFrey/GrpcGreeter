@@ -19,8 +19,6 @@ namespace GrpcGreeterClient
             Console.WriteLine("Enter number of checks:");
             int NumberOfChecks = Int32.Parse(Console.ReadLine());
 
-            var channelCredentials = new SslCredentials(File.ReadAllText(@"C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\Certs\server.pem"));
-            
             using var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var endpointClient = new Checker.CheckerClient(channel);
 

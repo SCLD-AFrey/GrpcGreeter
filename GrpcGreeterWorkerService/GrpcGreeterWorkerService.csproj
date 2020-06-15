@@ -5,6 +5,10 @@
     <UserSecretsId>dotnet-GrpcGreeterWorkerService-CB043EF9-9C71-48AB-8A1F-FFEC585A8E00</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.12.3" />
     <PackageReference Include="Grpc.AspNetCore.Server" Version="2.29.0" />
