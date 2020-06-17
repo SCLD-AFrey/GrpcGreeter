@@ -1,0 +1,10 @@
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\bin\Debug\netcoreapp3.1\GrpcClasses.deps.json
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\bin\Debug\netcoreapp3.1\GrpcClasses.dll
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\bin\Debug\netcoreapp3.1\GrpcClasses.pdb
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.AssemblyInfoInputs.cache
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.AssemblyInfo.cs
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.csproj.CoreCompileInputs.cache
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.dll
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.pdb
+C:\Users\AFrey\Documents\Development\SCLD-AFrey\GrpcGreeter\GrpcClasses\obj\Debug\netcoreapp3.1\GrpcClasses.csprojAssemblyReference.cache

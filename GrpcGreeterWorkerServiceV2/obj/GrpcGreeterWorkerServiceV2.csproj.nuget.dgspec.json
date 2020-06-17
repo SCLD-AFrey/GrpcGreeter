@@ -377,6 +377,10 @@
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
               "version": "[3.1.5, )"
+            },
+            "System.Diagnostics.EventLog": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [

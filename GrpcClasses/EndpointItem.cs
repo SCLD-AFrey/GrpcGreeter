@@ -10,6 +10,7 @@ namespace GrpcClasses
         public string Name { get; set; }
         public string IpAddress { get; set; }
         public string Platform { get; set; }
+        public int BatchID { get; set; } = 0;
     }
 
     public class EndpointItemCheck
@@ -24,6 +25,9 @@ namespace GrpcClasses
     {
         public static IPAddress IpAddress { get; } = IPAddress.Parse("127.0.0.1");
         public static int Port = 5001;
+
+        public static string LogSource = "GrpcLogSource";
+        public static string LogName = "GrpcGreeterLog";
     }
 
     public static class Utils
@@ -40,7 +44,8 @@ namespace GrpcClasses
                 {
                     Name = "Test " + i.ToString(),
                     IpAddress = string.Format("{0}.{1}.{2}.{3}", rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256), rand.Next(1, 256)),
-                    Platform = PlatformList[rand.Next(PlatformList.Count)]
+                    Platform = PlatformList[rand.Next(PlatformList.Count)],
+                    BatchID = i + 1
                 });
             }
 

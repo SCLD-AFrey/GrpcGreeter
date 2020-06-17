@@ -1129,7 +1129,8 @@
           "Grpc.AspNetCore": "2.27.0",
           "GrpcGreeterClient": "1.0.0",
           "Microsoft.AspNetCore.Authentication.Certificate": "3.1.5",
-          "Microsoft.Extensions.Configuration": "3.1.5"
+          "Microsoft.Extensions.Configuration": "3.1.5",
+          "System.Diagnostics.EventLog": "4.7.0"
         },
         "compile": {
           "bin/placeholder/GrpcGreeter.dll": {}
