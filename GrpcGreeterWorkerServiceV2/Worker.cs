@@ -13,7 +13,6 @@ using GrpcClasses;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using GrpcGreeter;
 
 namespace GrpcGreeterWorkerServiceV2
 {
@@ -33,19 +32,6 @@ namespace GrpcGreeterWorkerServiceV2
                 .ConfigureWebHostDefaults(builder =>
                 {
                     builder
-                        .ConfigureKestrel(options =>
-                        {
-                            /*
-                            options.Listen(CommonVars.IpAddress, CommonVars.Port, listenOptions =>
-                            {
-                                listenOptions.Protocols = HttpProtocols.Http2;
-                            });
-                            */
-                            options.ListenAnyIP(0, listenOptions =>
-                            {
-                                listenOptions.Protocols = HttpProtocols.Http2;
-                            });
-                        })
                         .UseKestrel()
                         .UseStartup<GrpcServerStartup>();
                 })

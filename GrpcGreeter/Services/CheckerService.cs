@@ -20,15 +20,6 @@ namespace GrpcGreeter
 
         public override Task<EndpointCheckReply> CheckEndpoint(EndpointCheckRequest request, ServerCallContext context)
         {
-
-
-            if (!EventLog.SourceExists(CommonVars.LogSource))
-            {
-                EventLog.CreateEventSource(CommonVars.LogSource, CommonVars.LogName);
-            }
-            EventLog myLog = new EventLog();
-            myLog.Source = CommonVars.LogSource;
-
             var reply = new EndpointCheckReply();
             var itemCheck = new EndpointItemCheck
             {
@@ -49,17 +40,10 @@ namespace GrpcGreeter
                     throw new Exception("THIS IS IN ERROR");
                 }
 
-                myLog.WriteEntry(
-                    string.Format("{0}-[{1}] Succeeded"
-                        ,itemCheck.Endpoint.Name
-                        ,itemCheck.Endpoint.IpAddress)
-                    , (itemCheck.Result) ? EventLogEntryType.Information : EventLogEntryType.Warning
-                    , itemCheck.Endpoint.BatchID);
             }
             catch (Exception e)
             {
                 itemCheck.Message = string.Format("{0}-[{1}] Failed - see Event Log for details", itemCheck.Endpoint.Name, itemCheck.Endpoint.IpAddress);
-                myLog.WriteEntry(String.Format("{0}-[{1}]-{2}", itemCheck.Endpoint.Name, itemCheck.Endpoint.IpAddress, e.Message), EventLogEntryType.Error, itemCheck.Endpoint.BatchID);
             } 
             
             reply.Content = JsonSerializer.Serialize(itemCheck);

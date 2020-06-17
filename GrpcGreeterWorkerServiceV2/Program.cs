@@ -26,8 +26,8 @@ namespace GrpcGreeterWorkerServiceV2
                     services.AddHostedService<Worker>()
                         .Configure<EventLogSettings>(config =>
                         {
-                            config.LogName = "Sample Grpc Service";
-                            config.SourceName = "Sample Grpc Service Source";
+                            config.LogName = "Grpc Greeter Service";
+                            config.SourceName = "Grpc Greeter Service Source";
                         });
                 }).UseWindowsService();
     }

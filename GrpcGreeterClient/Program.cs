@@ -19,7 +19,7 @@ namespace GrpcGreeterClient
             Console.WriteLine("Enter number of checks:");
             int NumberOfChecks = Int32.Parse(Console.ReadLine());
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:5001");
+            using var channel = GrpcChannel.ForAddress("https://localhost:50051");
             var endpointClient = new Checker.CheckerClient(channel);
 
             if (HasPulse(endpointClient).Result)
