@@ -54,10 +54,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "DevExpress.Xpo": {
-              "target": "Package",
-              "version": "[20.1.4, )"
-            },
             "Google.Protobuf": {
               "target": "Package",
               "version": "[3.12.3, )"
@@ -159,6 +155,10 @@
             "Google.Protobuf": {
               "target": "Package",
               "version": "[3.12.3, )"
+            },
+            "Grpc.Core": {
+              "target": "Package",
+              "version": "[2.29.0, )"
             },
             "Grpc.Net.Client": {
               "target": "Package",
