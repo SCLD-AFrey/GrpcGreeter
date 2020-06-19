@@ -55,20 +55,6 @@
           "lib/netstandard2.0/Google.Protobuf.dll": {}
         }
       },
-      "Grpc.AspNetCore/2.27.0": {
-        "type": "package",
-        "dependencies": {
-          "Google.Protobuf": "3.11.2",
-          "Grpc.AspNetCore.Server.ClientFactory": "2.27.0",
-          "Grpc.Tools": "2.27.0"
-        },
-        "compile": {
-          "lib/netcoreapp3.0/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/_._": {}
-        }
-      },
       "Grpc.AspNetCore.Server/2.29.0": {
         "type": "package",
         "dependencies": {
@@ -80,23 +66,6 @@
         },
         "runtime": {
           "lib/netcoreapp3.0/Grpc.AspNetCore.Server.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "Grpc.AspNetCore.Server.ClientFactory/2.27.0": {
-        "type": "package",
-        "dependencies": {
-          "Grpc.AspNetCore.Server": "2.27.0",
-          "Grpc.Core.Api": "2.27.0",
-          "Grpc.Net.ClientFactory": "2.27.0"
-        },
-        "compile": {
-          "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -200,18 +169,6 @@
           "build/Grpc.Tools.props": {},
           "build/Grpc.Tools.targets": {}
         }
-      },
-      "Microsoft.AspNetCore.Authentication.Certificate/3.1.5": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Certificate.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Certificate.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       },
       "Microsoft.Extensions.Configuration/3.1.5": {
         "type": "package",
@@ -1121,42 +1078,6 @@
         "runtime": {
           "bin/placeholder/GrpcClasses.dll": {}
         }
-      },
-      "GrpcGreeter/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Grpc.AspNetCore": "2.27.0",
-          "GrpcGreeterClient": "1.0.0",
-          "Microsoft.AspNetCore.Authentication.Certificate": "3.1.5",
-          "Microsoft.Extensions.Configuration": "3.1.5",
-          "System.Diagnostics.EventLog": "4.7.0"
-        },
-        "compile": {
-          "bin/placeholder/GrpcGreeter.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/GrpcGreeter.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "GrpcGreeterClient/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Google.Protobuf": "3.12.3",
-          "Grpc.Net.Client": "2.29.0",
-          "GrpcClasses": "1.0.0",
-          "Microsoft.Extensions.Configuration": "3.1.5"
-        },
-        "compile": {
-          "bin/placeholder/GrpcGreeterClient.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/GrpcGreeterClient.dll": {}
-        }
       }
     }
   },
@@ -1212,19 +1133,6 @@
         "lib/netstandard2.0/Google.Protobuf.xml"
       ]
     },
-    "Grpc.AspNetCore/2.27.0": {
-      "sha512": "IKuhlnLdxprf5Z6d2BzyxK0KSNDUkDT6AJA3SVUUnpShbjHwI5AMKzubcLsg1w4v2frdYvH6i2nWereDHHtLoA==",
-      "type": "package",
-      "path": "grpc.aspnetcore/2.27.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "grpc.aspnetcore.2.27.0.nupkg.sha512",
-        "grpc.aspnetcore.nuspec",
-        "lib/netcoreapp3.0/_._",
-        "packageIcon.png"
-      ]
-    },
     "Grpc.AspNetCore.Server/2.29.0": {
       "sha512": "MlhHV02tqml7VoJJ631csbXOfFr++uKdEaGOGiXB0Pc8OyViYdkIMJHPogrn7q+UlATGolSCC+YoiicoLPi5bA==",
       "type": "package",
@@ -1237,21 +1145,6 @@
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.dll",
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.pdb",
         "lib/netcoreapp3.0/Grpc.AspNetCore.Server.xml",
-        "packageIcon.png"
-      ]
-    },
-    "Grpc.AspNetCore.Server.ClientFactory/2.27.0": {
-      "sha512": "g09twYdktfpguByJDRRWvY51yfdS6fXnmPXCUNuhD5ipfOHQe6xu7ZTAaOKrwHUbTtPh/8bEFWfKzSzEJ0kdVQ==",
-      "type": "package",
-      "path": "grpc.aspnetcore.server.clientfactory/2.27.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "grpc.aspnetcore.server.clientfactory.2.27.0.nupkg.sha512",
-        "grpc.aspnetcore.server.clientfactory.nuspec",
-        "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.dll",
-        "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.pdb",
-        "lib/netcoreapp3.0/Grpc.AspNetCore.Server.ClientFactory.xml",
         "packageIcon.png"
       ]
     },
@@ -1398,21 +1291,6 @@
         "tools/windows_x64/protoc.exe",
         "tools/windows_x86/grpc_csharp_plugin.exe",
         "tools/windows_x86/protoc.exe"
-      ]
-    },
-    "Microsoft.AspNetCore.Authentication.Certificate/3.1.5": {
-      "sha512": "WMRttwLF2iDqZinf9SsdYEzcn1EF23vT83OY8lQ6/PmdK8fh87N+GKrdX2VG/0/4zPghFK1hgH7Ko8Uz9MiRlQ==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.authentication.certificate/3.1.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Certificate.dll",
-        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Certificate.xml",
-        "microsoft.aspnetcore.authentication.certificate.3.1.5.nupkg.sha512",
-        "microsoft.aspnetcore.authentication.certificate.nuspec"
       ]
     },
     "Microsoft.Extensions.Configuration/3.1.5": {
@@ -3570,16 +3448,6 @@
       "type": "project",
       "path": "../GrpcClasses/GrpcClasses.csproj",
       "msbuildProject": "../GrpcClasses/GrpcClasses.csproj"
-    },
-    "GrpcGreeter/1.0.0": {
-      "type": "project",
-      "path": "../GrpcGreeter/GrpcGreeter.csproj",
-      "msbuildProject": "../GrpcGreeter/GrpcGreeter.csproj"
-    },
-    "GrpcGreeterClient/1.0.0": {
-      "type": "project",
-      "path": "../GrpcGreeterClient/GrpcGreeterClient.csproj",
-      "msbuildProject": "../GrpcGreeterClient/GrpcGreeterClient.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3589,7 +3457,6 @@
       "Grpc.Net.ClientFactory >= 2.29.0",
       "Grpc.Tools >= 2.29.0",
       "GrpcClasses >= 1.0.0",
-      "GrpcGreeter >= 1.0.0",
       "Microsoft.Extensions.Hosting >= 3.1.5",
       "Microsoft.Extensions.Hosting.WindowsServices >= 3.1.5"
     ]
@@ -3640,9 +3507,6 @@
           "projectReferences": {
             "C:\\Users\\AFrey\\Documents\\Development\\SCLD-AFrey\\GrpcGreeter\\GrpcClasses\\GrpcClasses.csproj": {
               "projectPath": "C:\\Users\\AFrey\\Documents\\Development\\SCLD-AFrey\\GrpcGreeter\\GrpcClasses\\GrpcClasses.csproj"
-            },
-            "C:\\Users\\AFrey\\Documents\\Development\\SCLD-AFrey\\GrpcGreeter\\GrpcGreeter\\GrpcGreeter.csproj": {
-              "projectPath": "C:\\Users\\AFrey\\Documents\\Development\\SCLD-AFrey\\GrpcGreeter\\GrpcGreeter\\GrpcGreeter.csproj"
             }
           }
         }

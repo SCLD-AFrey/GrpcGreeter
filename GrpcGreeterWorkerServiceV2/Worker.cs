@@ -8,11 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Grpc;
-using GrpcClasses;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace GrpcGreeterWorkerServiceV2
 {
@@ -44,7 +41,7 @@ namespace GrpcGreeterWorkerServiceV2
             public void ConfigureServices(IServiceCollection services)
             {
                 services.AddGrpc();
-                services.AddSingleton<CheckerService>();
+                services.AddSingleton<Services.CheckerService>();
             }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,7 +50,7 @@ namespace GrpcGreeterWorkerServiceV2
 
                 app.UseEndpoints(endpoints =>
                 {
-                    endpoints.MapGrpcService<CheckerService>();
+                    endpoints.MapGrpcService<Services.CheckerService>();
                 });
             }
         }

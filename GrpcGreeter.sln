@@ -3,19 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcGreeter", "GrpcGreeter\GrpcGreeter.csproj", "{5022D047-F438-476D-B484-83710675ED08}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcGreeterClient", "GrpcGreeterClient\GrpcGreeterClient.csproj", "{07E946DF-E4A5-4CF1-9C23-9001078EE011}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcClasses", "GrpcClasses\GrpcClasses.csproj", "{19BB23C8-A12A-4317-BF4E-4C36305D4604}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcGreeterClientDuplicate", "GrpcGreeterClientDuplicate\GrpcGreeterClientDuplicate.csproj", "{D15247CC-2DAD-4BAF-9A66-B0BB5C1A1816}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcGreeterClientAsync", "GrpcGreeterClientAsync\GrpcGreeterClientAsync.csproj", "{D3B0189C-A1E5-4F0A-934C-125B8B582724}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcGreeterClientAsync", "GrpcGreeterClientAsync\GrpcGreeterClientAsync.csproj", "{D3B0189C-A1E5-4F0A-934C-125B8B582724}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcGreeterWorkerService", "GrpcGreeterWorkerService\GrpcGreeterWorkerService.csproj", "{5A4866C5-82C9-4402-93B9-79A5AD8F6E27}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcGreeterWorkerServiceV2", "GrpcGreeterWorkerServiceV2\GrpcGreeterWorkerServiceV2.csproj", "{0105B708-FEDB-42DB-9811-66AC69D32253}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcGreeterWorkerServiceV2", "GrpcGreeterWorkerServiceV2\GrpcGreeterWorkerServiceV2.csproj", "{0105B708-FEDB-42DB-9811-66AC69D32253}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5022D047-F438-476D-B484-83710675ED08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5022D047-F438-476D-B484-83710675ED08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5022D047-F438-476D-B484-83710675ED08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5022D047-F438-476D-B484-83710675ED08}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07E946DF-E4A5-4CF1-9C23-9001078EE011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07E946DF-E4A5-4CF1-9C23-9001078EE011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E946DF-E4A5-4CF1-9C23-9001078EE011}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,10 +35,6 @@ Global
 		{D3B0189C-A1E5-4F0A-934C-125B8B582724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3B0189C-A1E5-4F0A-934C-125B8B582724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3B0189C-A1E5-4F0A-934C-125B8B582724}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A4866C5-82C9-4402-93B9-79A5AD8F6E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A4866C5-82C9-4402-93B9-79A5AD8F6E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A4866C5-82C9-4402-93B9-79A5AD8F6E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A4866C5-82C9-4402-93B9-79A5AD8F6E27}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0105B708-FEDB-42DB-9811-66AC69D32253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0105B708-FEDB-42DB-9811-66AC69D32253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0105B708-FEDB-42DB-9811-66AC69D32253}.Release|Any CPU.ActiveCfg = Release|Any CPU
