@@ -104,6 +104,11 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
       }
     },
     "C:\\Users\\AFrey\\Documents\\Development\\SCLD-AFrey\\GrpcGreeter\\GrpcGreeterWorkerServiceV2\\GrpcGreeterWorkerServiceV2.csproj": {
@@ -113,7 +118,7 @@
         "projectName": "GrpcGreeterWorkerServiceV2",
         "projectPath": "C:\\Users\\AFrey\\Documents\\Development\\SCLD-AFrey\\GrpcGreeter\\GrpcGreeterWorkerServiceV2\\GrpcGreeterWorkerServiceV2.csproj",
         "packagesPath": "C:\\Users\\AFrey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AFrey\\Documents\\Development\\SCLD-AFrey\\GrpcGreeter\\GrpcGreeterWorkerServiceV2\\obj\\",
+        "outputPath": "C:\\Users\\AFrey\\Documents\\Development\\SCLD-AFrey\\GrpcGreeter\\GrpcGreeterWorkerServiceV2\\obj\\publish\\win-x64\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -208,14 +213,16 @@
             }
           ],
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

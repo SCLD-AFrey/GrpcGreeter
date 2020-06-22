@@ -19,11 +19,11 @@ namespace GrpcGreeterClient
             Console.WriteLine("Enter number of checks:");
             int NumberOfChecks = Int32.Parse(Console.ReadLine());
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:50051");
+            using var channel = GrpcChannel.ForAddress("https://localhost:5000");
             var endpointClient = new Checker.CheckerClient(channel);
 
-            if (HasPulse(endpointClient).Result)
-            {
+            //if (HasPulse(endpointClient).Result)
+            //{
                 var _stopwatch = new Stopwatch();
                 List<EndpointItem> EndpointItemList = Utils.CreateEndpointList(NumberOfChecks);
 
@@ -57,10 +57,11 @@ namespace GrpcGreeterClient
                 _stopwatch.Stop();
                 Console.WriteLine("Finshed " + NumberOfChecks + " records in " + _stopwatch.Elapsed + " seconds");
 
-            }
+            //}
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
+        /*
         private static async Task<bool> HasPulse(Checker.CheckerClient client)
         {
             bool _pulse = false;
@@ -86,5 +87,6 @@ namespace GrpcGreeterClient
             return _pulse;
 
         }
+        */
     }
 }

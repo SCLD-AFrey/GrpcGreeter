@@ -1,0 +1,2 @@
+obj\Release\netcoreapp3.1\win-x64/Greet.cs \
+obj\Release\netcoreapp3.1\win-x64/GreetGrpc.cs: ../GrpcClasses/Protos/greet.proto

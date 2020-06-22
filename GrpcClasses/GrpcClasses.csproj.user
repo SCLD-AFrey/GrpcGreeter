@@ -5,6 +5,9 @@
     <Compile Update="Creds.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EncryptionEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EndpointItemCheck.cs">
       <SubType>Code</SubType>
     </Compile>
