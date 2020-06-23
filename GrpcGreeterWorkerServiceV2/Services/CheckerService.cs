@@ -17,16 +17,16 @@ namespace GrpcGreeterWorkerServiceV2.Services
             _logger = logger;
         }
 
-        public override Task<EndpointCheckReply> CheckEndpoint(EndpointCheckRequest request, ServerCallContext context)
+        public override Task<EndpointCheckReply> CheckEndpoint(EndpointCheckRequest p_request, ServerCallContext p_context)
         {
-            List<string> PlatormList = new List<string>() { "windows", "linux" };
-            var item = JsonSerializer.Deserialize<EndpointItem>(request.Content);
+            List<string> platformList = new List<string>() { "windows", "linux" };
+            var item = JsonSerializer.Deserialize<EndpointItem>(p_request.Content);
             var itemCheck = new EndpointItemCheck()
             {
                 Endpoint = item
             };
 
-            if (!PlatormList.Contains(item.Platform.ToLower()))
+            if (!platformList.Contains(item.Platform.ToLower()))
             {
                 itemCheck.Message += "Platform is not windows or linux";
             }
@@ -41,8 +41,7 @@ namespace GrpcGreeterWorkerServiceV2.Services
             return Task.FromResult(reply);
         }
 
-        public override Task<HeartbeatCheckReply> HeartbeatCheck(HeartbeatCheckRequest request,
-            ServerCallContext context)
+        public override Task<HeartbeatCheckReply> HeartbeatCheck(HeartbeatCheckRequest p_request, ServerCallContext p_context)
         {
             return Task.FromResult(new HeartbeatCheckReply()
             {

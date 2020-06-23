@@ -20,10 +20,10 @@ namespace GrpcGreeterClientSsl
         {
             Console.WriteLine("gRPC Greet Client - SSL");
             Console.WriteLine("Enter number of checks:");
-            int NumberOfChecks = Int32.Parse(Console.ReadLine());
+            var numberOfChecks = Int32.Parse(Console.ReadLine());
 
             //var cert = X509Certificate.CreateFromCertFile("C:\\certs\\GreeterCert.crt");
-            X509Certificate cert = X509Certificate2.CreateFromSignedFile("C:\\certs\\GreeterCert.crt");
+            X509Certificate cert = X509Certificate.CreateFromSignedFile("C:\\certs\\GreeterCert.crt");
 
             var handler = new HttpClientHandler();
             handler.ClientCertificates.Add(cert);
@@ -36,24 +36,24 @@ namespace GrpcGreeterClientSsl
                 ;
             var endpointClient = new Checker.CheckerClient(channel);
 
-            var _stopwatch = new Stopwatch();
-            List<EndpointItem> EndpointItemList = Utils.CreateEndpointList(NumberOfChecks);
+            var stopwatch = new Stopwatch();
+            List<EndpointItem> endpointItemList = Utils.CreateEndpointList(numberOfChecks);
 
-            Console.WriteLine(EndpointItemList.Count.ToString() + " items to process");
+            Console.WriteLine(endpointItemList.Count.ToString() + " items to process");
 
-            _stopwatch.Start();
+            stopwatch.Start();
 
-            foreach (var item in EndpointItemList)
+            foreach (var item in endpointItemList)
             {
-                var _request = new EndpointCheckRequest()
+                var request = new EndpointCheckRequest()
                 {
                     Content = JsonSerializer.Serialize(item)
                 };
                 var check = new EndpointItemCheck();
                 try
                 {
-                    var _reply = await endpointClient.CheckEndpointAsync(_request);
-                    check = JsonSerializer.Deserialize<EndpointItemCheck>(_reply.Content);
+                    var reply = await endpointClient.CheckEndpointAsync(request);
+                    check = JsonSerializer.Deserialize<EndpointItemCheck>(reply.Content);
                 }
                 catch (Exception e)
                 {
@@ -66,8 +66,8 @@ namespace GrpcGreeterClientSsl
                 Console.WriteLine(check.Endpoint.Name + " - " + check.Result + " " + check.Message);
             }
 
-            _stopwatch.Stop();
-            Console.WriteLine("Finshed " + NumberOfChecks + " records in " + _stopwatch.Elapsed + " seconds");
+            stopwatch.Stop();
+            Console.WriteLine("Finshed " + numberOfChecks + " records in " + stopwatch.Elapsed + " seconds");
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();

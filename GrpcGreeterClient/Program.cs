@@ -17,31 +17,31 @@ namespace GrpcGreeterClient
         {
             Console.WriteLine("gRPC Greet Client - Sync");
             Console.WriteLine("Enter number of checks:");
-            int NumberOfChecks = Int32.Parse(Console.ReadLine());
+            var numberOfChecks = Int32.Parse(Console.ReadLine());
 
             using var channel = GrpcChannel.ForAddress("https://localhost:5000");
             var endpointClient = new Checker.CheckerClient(channel);
 
             //if (HasPulse(endpointClient).Result)
             //{
-                var _stopwatch = new Stopwatch();
-                List<EndpointItem> EndpointItemList = Utils.CreateEndpointList(NumberOfChecks);
+                var stopwatch = new Stopwatch();
+                List<EndpointItem> EndpointItemList = Utils.CreateEndpointList(numberOfChecks);
 
                 Console.WriteLine(EndpointItemList.Count.ToString() + " items to process");
 
-                _stopwatch.Start();
+                stopwatch.Start();
 
                 foreach (var item in EndpointItemList)
                 {
-                    var _request = new EndpointCheckRequest()
+                    var request = new EndpointCheckRequest()
                     {
                         Content = JsonSerializer.Serialize(item)
                     };
                     var check = new EndpointItemCheck();
                     try
                     {
-                        var _reply = await endpointClient.CheckEndpointAsync(_request);
-                        check = JsonSerializer.Deserialize<EndpointItemCheck>(_reply.Content);
+                        var reply = await endpointClient.CheckEndpointAsync(request);
+                        check = JsonSerializer.Deserialize<EndpointItemCheck>(reply.Content);
                     }
                     catch (Exception e)
                     {
@@ -54,8 +54,8 @@ namespace GrpcGreeterClient
                     Console.WriteLine(check.Endpoint.Name + " - " + check.Result + " " + check.Message);
                 }
 
-                _stopwatch.Stop();
-                Console.WriteLine("Finshed " + NumberOfChecks + " records in " + _stopwatch.Elapsed + " seconds");
+                stopwatch.Stop();
+                Console.WriteLine("Finshed " + numberOfChecks + " records in " + stopwatch.Elapsed + " seconds");
 
             //}
             Console.WriteLine("Press any key to exit...");

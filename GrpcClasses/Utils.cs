@@ -7,12 +7,12 @@ namespace GrpcClasses
 
     public static class Utils
     {
-        public static List<EndpointItem> CreateEndpointList(int count)
+        public static List<EndpointItem> CreateEndpointList(int p_count)
         {
             List<EndpointItem> EndpointItemList = new List<EndpointItem>();
             List<string> PlatformList = new List<string>() { "windows", "linux", "other" };
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < p_count; i++)
             {
                 Random rand = new Random();
                 EndpointItemList.Add(new EndpointItem()

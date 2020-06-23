@@ -29,11 +29,7 @@ namespace GrpcClasses
                 File.ReadAllText(ServerPrivateKeyPath));
             return new SslServerCredentials(new[] { keyCertPair });
         }
-        private static string GetPath(string relativePath)
-        {
-            var assemblyDir = Path.GetDirectoryName(typeof(Creds).GetTypeInfo().Assembly.Location);
-            return Path.Combine(assemblyDir, relativePath);
-        }
+
     }
 
 

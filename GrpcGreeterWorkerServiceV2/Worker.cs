@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -12,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Configuration;
 using GrpcClasses;
 
 namespace GrpcGreeterWorkerServiceV2
@@ -23,27 +21,28 @@ namespace GrpcGreeterWorkerServiceV2
         private readonly ILogger<Worker> _logger;
         private readonly string CertName = "GreeterCert";
         private readonly string CertPath = "C:\\certs\\";
-        private IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
-        private int insecPort = 5000;
-        private int sslPort = 50051;
-        private string password = "pass";
+        private readonly IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
+        private readonly int insecPort = 5000;
+        private readonly int sslPort = 50051;
+        private readonly string password = "pass";
 
 
-        public Worker(ILogger<Worker> logger, IConfiguration configuration)
+        public Worker(ILogger<Worker> logger)
         {
             _logger = logger;
-
+            
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-
+            
             if (!EncryptionEngine.IsCertExist(CertName, CertPath))
             {
                 EncryptionEngine.CreatePfx(CertName, CertPath, password);
             }
 
             await Host.CreateDefaultBuilder()
+                .UseConsoleLifetime()
                 .ConfigureWebHostDefaults(builder =>
                 {
                     builder.UseKestrel(serverOptions =>
@@ -65,17 +64,17 @@ namespace GrpcGreeterWorkerServiceV2
 
         public class GrpcServerStartup
         {
-            public void ConfigureServices(IServiceCollection services)
+            public void ConfigureServices(IServiceCollection p_services)
             {
-                services.AddGrpc();
-                services.AddSingleton<Services.CheckerService>();
+                p_services.AddGrpc();
+                p_services.AddSingleton<Services.CheckerService>();
             }
 
-            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+            public void Configure(IApplicationBuilder p_app)
             {
-                app.UseRouting();
+                p_app.UseRouting();
 
-                app.UseEndpoints(endpoints =>
+                p_app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapGrpcService<Services.CheckerService>();
                 });
