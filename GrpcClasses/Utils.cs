@@ -5,9 +5,13 @@ using System.Net;
 namespace GrpcClasses
 {
 
-    public static class Utils
+    public class Utilities
     {
-        public static List<EndpointItem> CreateEndpointList(int p_count)
+        public Utilities()
+        {
+
+        }
+        public List<EndpointItem> CreateEndpointList(int p_count)
         {
             List<EndpointItem> EndpointItemList = new List<EndpointItem>();
             List<string> PlatformList = new List<string>() { "windows", "linux", "other" };

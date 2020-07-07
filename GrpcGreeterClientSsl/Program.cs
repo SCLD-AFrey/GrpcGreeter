@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using DidiSoft.OpenSsl;
+using DidiSoft.OpenSsl.X509;
 
 namespace GrpcGreeterClientSsl
 {
@@ -18,26 +19,28 @@ namespace GrpcGreeterClientSsl
     {
         static async Task Main(string[] args)
         {
+            Utilities utils = new Utilities();
+            var engine = new EncryptionEngine();
+
             Console.WriteLine("gRPC Greet Client - SSL");
             Console.WriteLine("Enter number of checks:");
             var numberOfChecks = Int32.Parse(Console.ReadLine());
 
-            //var cert = X509Certificate.CreateFromCertFile("C:\\certs\\GreeterCert.crt");
-            X509Certificate cert = X509Certificate.CreateFromSignedFile("C:\\certs\\GreeterCert.crt");
+            var cert = Certificate.Load(engine.CertPath + engine.CertName + ".crt");
+            var cert509 = cert.ToX509Certificate2();
 
             var handler = new HttpClientHandler();
-            handler.ClientCertificates.Add(cert);
+            handler.ClientCertificates.Add(cert509);
             var httpClient = new HttpClient(handler);
 
             using var channel = GrpcChannel.ForAddress("https://localhost:50051", new GrpcChannelOptions
                 {
                     HttpClient = httpClient
-            })
-                ;
+                });
             var endpointClient = new Checker.CheckerClient(channel);
 
             var stopwatch = new Stopwatch();
-            List<EndpointItem> endpointItemList = Utils.CreateEndpointList(numberOfChecks);
+            List<EndpointItem> endpointItemList = utils.CreateEndpointList(numberOfChecks);
 
             Console.WriteLine(endpointItemList.Count.ToString() + " items to process");
 

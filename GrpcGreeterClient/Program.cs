@@ -22,10 +22,10 @@ namespace GrpcGreeterClient
             using var channel = GrpcChannel.ForAddress("https://localhost:5000");
             var endpointClient = new Checker.CheckerClient(channel);
 
-            //if (HasPulse(endpointClient).Result)
-            //{
+
                 var stopwatch = new Stopwatch();
-                List<EndpointItem> EndpointItemList = Utils.CreateEndpointList(numberOfChecks);
+                var utils = new Utilities();
+                List<EndpointItem> EndpointItemList = utils.CreateEndpointList(numberOfChecks);
 
                 Console.WriteLine(EndpointItemList.Count.ToString() + " items to process");
 
@@ -57,36 +57,9 @@ namespace GrpcGreeterClient
                 stopwatch.Stop();
                 Console.WriteLine("Finshed " + numberOfChecks + " records in " + stopwatch.Elapsed + " seconds");
 
-            //}
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
-        /*
-        private static async Task<bool> HasPulse(Checker.CheckerClient client)
-        {
-            bool _pulse = false;
-            try
-            {
-                var Heartbeat = await client.HeartbeatCheckAsync(new HeartbeatCheckRequest());
-                _pulse = Heartbeat.Reply;
-            }
-            catch (Exception e)
-            {
-                _pulse = false;
-            }
 
-            if (_pulse)
-            {
-                Console.WriteLine("Server is alive");
-            }
-            else
-            {
-                Console.WriteLine("Server is not responding");
-            }
-
-            return _pulse;
-
-        }
-        */
     }
 }

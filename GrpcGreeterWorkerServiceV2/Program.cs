@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GrpcClasses;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Hosting.WindowsServices;
@@ -14,10 +15,13 @@ namespace GrpcGreeterWorkerServiceV2
     {
         public static void Main(string[] args)
         {
+            var engine = new EncryptionEngine();
+            engine.CreatePfx(engine.CertName, engine.CertPath, engine.CertPassword);
             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
+
             Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(
                     options => options.AddFilter<EventLogLoggerProvider>(level => level >= LogLevel.Information))

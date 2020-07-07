@@ -7,44 +7,53 @@ using DidiSoft.OpenSsl.X509;
 namespace GrpcClasses
 {
 
-    public static class EncryptionEngine
+    public class EncryptionEngine
     {
-        public static KeyPair CreateKepPair()
+        public string CertPath = "C:\\certs\\";
+        public string CertName = "GrpcGreeterCert";
+        public string CertPassword = "P@ssword";
+        public int SslPort = 50051;
+
+        public KeyPair CreateKepPair(KeyLength p_keyLength = KeyLength.Length1024)
         {
-            DidiSoft.OpenSsl.KeyPair kp = DidiSoft.OpenSsl.KeyPair.GenerateKeyPair(KeyAlgorithm.Rsa, KeyLength.Length2048);
+            DidiSoft.OpenSsl.KeyPair kp = DidiSoft.OpenSsl.KeyPair.GenerateKeyPair(KeyAlgorithm.Rsa, p_keyLength);
             return kp;
         }
 
-        public static bool IsCertExist(string p_certificateName, string p_certificatePath)
+        public bool IsCertExist(string p_certificateName, string p_certificatePath)
         {
             return File.Exists(p_certificatePath + p_certificateName + ".crt");
         }
 
-        public static Certificate CreateCert(string p_certificateName, string p_certificatePath, KeyPair p_keyPair)
+        public void CreateCert(string p_certificateName, string p_certificatePath, KeyPair p_keyPair)
         {
-            X509Name certificateProperties = new DidiSoft.OpenSsl.X509.X509Name()
-            {
-                CommonName = p_certificateName,
-                CountryCode = "US",
-                Organization = "SteelCloud",
-                OrganizationUnit = "Dev team",
-                Locality = "Ashburn, VA",
-                EmailAddress = "afrey@steelcloud.com"
-            };
-
-            Certificate cert = Certificate.CreateSelfSignedCertificate(p_keyPair.Public, p_keyPair.Private, certificateProperties);
+            Certificate cert = Certificate.CreateSelfSignedCertificate(p_keyPair.Public, p_keyPair.Private, GetCertProps(p_certificateName));
             cert.Save(p_certificatePath + p_certificateName + ".crt", true);
-            return cert;
         }
 
-        public static void CreatePfx(string p_certificateName, string p_certificatePath, string p_password)
+        public void CreatePfx(string p_certificateName, string p_certificatePath, string p_password)
         {
             KeyPair kp = CreateKepPair();
-            var cert = CreateCert(p_certificateName, p_certificatePath, kp);
+            CreateCert(p_certificateName, p_certificatePath, kp);
+            var cert = Certificate.Load(CertPath + CertName + ".crt");
             var pfxStore = new PfxStore();
             pfxStore.AddCertificate(cert.Subject.CommonName, cert);
             pfxStore.AddPrivateKey(cert.Subject.CommonName, kp.Private);
             pfxStore.Save(p_certificatePath + p_certificateName + ".pfx", p_password);
+        }
+        
+
+        private X509Name GetCertProps(string p_certificateName)
+        {
+            return new DidiSoft.OpenSsl.X509.X509Name()
+            {
+                CommonName = p_certificateName,
+                CountryCode = "US",
+                Organization = "SteelCloud",
+                OrganizationUnit = "Dev Team",
+                Locality = "Ashburn, VA",
+                EmailAddress = "afrey@steelcloud.com"
+            };
         }
 
     }

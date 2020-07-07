@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -19,12 +20,6 @@ namespace GrpcGreeterWorkerServiceV2
     {
 
         private readonly ILogger<Worker> _logger;
-        private readonly string CertName = "GreeterCert";
-        private readonly string CertPath = "C:\\certs\\";
-        private readonly IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
-        private readonly int insecPort = 5000;
-        private readonly int sslPort = 50051;
-        private readonly string password = "pass";
 
 
         public Worker(ILogger<Worker> logger)
@@ -35,11 +30,7 @@ namespace GrpcGreeterWorkerServiceV2
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            
-            if (!EncryptionEngine.IsCertExist(CertName, CertPath))
-            {
-                EncryptionEngine.CreatePfx(CertName, CertPath, password);
-            }
+            var engine = new EncryptionEngine();
 
             await Host.CreateDefaultBuilder()
                 .UseConsoleLifetime()
@@ -47,14 +38,13 @@ namespace GrpcGreeterWorkerServiceV2
                 {
                     builder.UseKestrel(serverOptions =>
                         {
-                        serverOptions.Listen(ipAddress, sslPort,
+                        serverOptions.Listen(IPAddress.Parse("127.0.0.1"), engine.SslPort,
                             listenOptions =>
                             {
                                 listenOptions
-                                    .UseHttps(CertPath + CertName + ".pfx", password)
+                                    .UseHttps(engine.CertPath + engine.CertName + ".pfx", engine.CertPassword)
                                     .Protocols = HttpProtocols.Http2;
                             });
-                        serverOptions.Listen(ipAddress, insecPort);
                         })
                         .UseStartup<GrpcServerStartup>();
                 })
