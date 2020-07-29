@@ -30,6 +30,7 @@ namespace GrpcGreeterWorkerServiceV2
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            _logger.LogInformation("Starting Worker");
             var engine = new EncryptionEngine();
 
             await Host.CreateDefaultBuilder()

@@ -20,15 +20,12 @@ namespace GrpcClasses
             return kp;
         }
 
-        public bool IsCertExist(string p_certificateName, string p_certificatePath)
-        {
-            return File.Exists(p_certificatePath + p_certificateName + ".crt");
-        }
-
         public void CreateCert(string p_certificateName, string p_certificatePath, KeyPair p_keyPair)
         {
-            Certificate cert = Certificate.CreateSelfSignedCertificate(p_keyPair.Public, p_keyPair.Private, GetCertProps(p_certificateName));
+            Certificate cert = Certificate.CreateSelfSignedCertificate(p_keyPair.Public, p_keyPair.Private, CertificateX509Name(p_certificateName));
             cert.Save(p_certificatePath + p_certificateName + ".crt", true);
+            //var cert2 = cert.ToX509Certificate();
+            //File.WriteAllBytes(CertPath + CertName + ".crt", cert2.Export(X509ContentType.Cert));
         }
 
         public void CreatePfx(string p_certificateName, string p_certificatePath, string p_password)
@@ -43,7 +40,7 @@ namespace GrpcClasses
         }
         
 
-        private X509Name GetCertProps(string p_certificateName)
+        private X509Name CertificateX509Name(string p_certificateName)
         {
             return new DidiSoft.OpenSsl.X509.X509Name()
             {

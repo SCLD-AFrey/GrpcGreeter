@@ -19,6 +19,9 @@ namespace GrpcGreeterWorkerServiceV2.Services
 
         public override Task<EndpointCheckReply> CheckEndpoint(EndpointCheckRequest p_request, ServerCallContext p_context)
         {
+            _logger.LogInformation("Request Started");
+
+
             List<string> platformList = new List<string>() { "windows", "linux" };
             var item = JsonSerializer.Deserialize<EndpointItem>(p_request.Content);
             var itemCheck = new EndpointItemCheck()

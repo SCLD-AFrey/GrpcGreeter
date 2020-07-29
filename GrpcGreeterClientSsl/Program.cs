@@ -8,10 +8,19 @@ using GrpcClasses;
 using Grpc.Core;
 using System.IO;
 using System.Diagnostics;
+using System.Management.Automation;
 using System.Net.Http;
+using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using DidiSoft.OpenSsl;
 using DidiSoft.OpenSsl.X509;
+
+using System.Collections.ObjectModel;
+using System.Dynamic;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
+using System.Text;
+using Microsoft.VisualBasic;
 
 namespace GrpcGreeterClientSsl
 {
@@ -22,7 +31,61 @@ namespace GrpcGreeterClientSsl
             Utilities utils = new Utilities();
             var engine = new EncryptionEngine();
 
+            var script = "Test-NetConnection -ComputerName 127.0.0.1 -Port " + engine.SslPort;
+
             Console.WriteLine("gRPC Greet Client - SSL");
+
+            Runspace runspace = RunspaceFactory.CreateRunspace();
+            runspace.Open();
+
+            Pipeline pipeline = runspace.CreatePipeline();
+            pipeline.Commands.AddScript(script);
+
+            pipeline.Commands.Add("Out-String");
+
+            Collection<PSObject> results = pipeline.Invoke();
+
+            runspace.Close();
+
+            dynamic o = new ExpandoObject();
+
+            foreach (PSObject obj in results)
+            {
+                //Console.Write(obj.ToString());
+
+                string[] stringSeparators = new string[] { "\r\n" };
+                string[] lines = obj.ToString().Split(stringSeparators, StringSplitOptions.None);
+                Console.WriteLine("Nr. Of items in list: " + lines.Length);
+                foreach (string s in lines)
+                {
+                    Console.WriteLine(s);
+                }
+
+            }
+
+
+
+                /*
+            using (PowerShell ps = PowerShell.Create())
+            {
+
+
+
+
+                ps.AddScript(script);
+
+
+
+                var pipelineObjects = await ps.InvokeAsync().ConfigureAwait(false);
+                foreach (var item in pipelineObjects)
+                {
+                    Console.WriteLine(item.Properties.ToString());
+                }
+            }
+                */
+
+
+
             Console.WriteLine("Enter number of checks:");
             var numberOfChecks = Int32.Parse(Console.ReadLine());
 
@@ -31,9 +94,10 @@ namespace GrpcGreeterClientSsl
 
             var handler = new HttpClientHandler();
             handler.ClientCertificates.Add(cert509);
+
             var httpClient = new HttpClient(handler);
 
-            using var channel = GrpcChannel.ForAddress("https://localhost:50051", new GrpcChannelOptions
+            using var channel = GrpcChannel.ForAddress("https://127.0.0.1:" + engine.SslPort.ToString(), new GrpcChannelOptions
                 {
                     HttpClient = httpClient
                 });
